@@ -1,0 +1,86 @@
+.header-nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  min-height: 70px;
+  align-items: center;
+  width: 100%;
+  padding: 0 1.15rem;
+}
+
+.header-nav__logo {
+  display: flex;
+}
+
+.header-nav__logo span {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 4rem;
+  color: white;
+  font-size: 20px;
+}
+
+.header-nav__logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+}
+
+.header-nav__menu-list {
+  display: flex;
+}
+
+.header-nav__menu-item {
+  margin: 0 15px;
+}
+
+.header-nav__menu-item a {
+  color: white;
+  font-size: 17px;
+}
+
+.header-nav__menu-item--btn {
+  background: #05a081;
+  padding: 0.8rem 2rem;
+  -webkit-transition: 0.1s -webkit-transform ease;
+  transition: 0.1s -webkit-transform ease;
+  transition: 0.1s transform ease;
+  transition: 0.1s transform ease, 0.1s -webkit-transform ease;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.header-nav__menu-item--btn:hover {
+  background: #0c8d73;
+}
+
+.header-nav__menu-item:nth-child(5) {
+  margin-right: 0px;
+}
+
+.header-nav__menu-item:nth-child(5):hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+  -webkit-transition: 0.2s -webkit-transform ease;
+  transition: 0.2s -webkit-transform ease;
+  transition: 0.2s transform ease;
+  transition: 0.2s transform ease, 0.2s -webkit-transform ease;
+}
+
+.header-nav__logo span:hover,
+.header-nav__menu-item a:hover {
+  color: rgb(204, 198, 198);
+}
+
+.header-nav__logo,
+.header-nav__menu-item:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 858px) {
+  .header-nav__menu-list {
+    display: none;
+  }
+}
