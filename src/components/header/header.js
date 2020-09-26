@@ -3,12 +3,14 @@ import './header.css';
 
 import headerBackground from '../../constants/constants';
 import HeaderNavigation from '../header-nav/header-navigation';
+import SearchPanel from '../search-panel/search-panel';
 
 function Header() {
   return (
-    <div style={headerBackground} className="header">
+    <header style={headerBackground} className="header">
       <HeaderNavigation />
-    </div>
+      <SearchPanel />
+    </header>
   );
 }
 

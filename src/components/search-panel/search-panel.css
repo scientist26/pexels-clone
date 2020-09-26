@@ -1,0 +1,46 @@
+.header-search-panel {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-width: 650px;
+  width: 100%;
+  padding: 0 1.15rem;
+}
+
+.header-search-panel__title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 700;
+  color: white;
+}
+
+.header-search-panel__tags {
+  display: flex;
+  margin-top: 5px;
+}
+
+.header-search-panel__tags__suggest {
+  color: white;
+}
+
+.header-search-panel__tags__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0.5rem;
+}
+
+.header-search-panel__tags__item {
+  margin: 0 0.2rem;
+  opacity: 0.8;
+}
+
+.popular-tag {
+  color: #ffffff;
+}
+
+.popular-tag::after {
+  content: ',';
+  color: #ffffff;
+}

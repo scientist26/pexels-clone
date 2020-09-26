@@ -1,7 +1,7 @@
 import React from 'react';
 import './header-navigation.css';
 
-import SearchPannel from '../search-pannel/search-pannel';
+import SearchField from '../search-field/search-field';
 
 function HeaderNavigation() {
   return (
@@ -10,7 +10,7 @@ function HeaderNavigation() {
         <img src="icon/icon-pexels.png" alt="pexels-icon" className="header-nav__logo-icon"></img>
         <span>Pexels</span>
       </a>
-      <SearchPannel />
+      <SearchField />
       <ul className="header-nav__menu-list">
         <li className="header-nav__menu-item">
           <a href="#/">Explore</a>

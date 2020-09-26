@@ -1,4 +1,4 @@
-/* .App {
-  max-width: 1200px;
-  margin: 0 auto;
-} */
+.divide-line {
+  height: 10px;
+  background-color: rgb(36, 35, 36);
+}
