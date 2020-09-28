@@ -6,6 +6,8 @@
   align-items: center;
   width: 100%;
   padding: 0 1.15rem;
+  z-index: 1;
+  background-color: #232a34;
 }
 
 .header-nav__logo {
@@ -36,19 +38,19 @@
 }
 
 .header-nav__menu-item a {
-  color: white;
   font-size: 17px;
+  color: white;
 }
 
 .header-nav__menu-item--btn {
   background: #05a081;
   padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
   -webkit-transition: 0.1s -webkit-transform ease;
   transition: 0.1s -webkit-transform ease;
   transition: 0.1s transform ease;
   transition: 0.1s transform ease, 0.1s -webkit-transform ease;
-  border-radius: 4px;
-  font-weight: 600;
 }
 
 .header-nav__menu-item--btn:hover {
