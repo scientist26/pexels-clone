@@ -1,9 +1,3 @@
-.photo-container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 .photo-item {
   position: relative;
   margin: 1rem;
@@ -21,12 +15,6 @@
   display: flex;
   margin-bottom: 0.9rem;
   margin-left: 0.9rem;
-}
-
-.photo-item__author-img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
 }
 
 .photo-item__author-name {

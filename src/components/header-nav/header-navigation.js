@@ -1,9 +1,12 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './header-navigation.css';
+import * as actions from '../../redux/actions/actions';
 
 import SearchField from '../search-field/search-field';
 
-function HeaderNavigation() {
+function HeaderNavigation({ nextPage, nextRnd }) {
   return (
     <nav className="header-nav">
       <a className="header-nav__logo" href="#/">
@@ -13,10 +16,14 @@ function HeaderNavigation() {
       <SearchField />
       <ul className="header-nav__menu-list">
         <li className="header-nav__menu-item">
-          <a href="#/">Explore</a>
+          <a href="#/" onClick={nextPage}>
+            Explore
+          </a>
         </li>
         <li className="header-nav__menu-item">
-          <a href="#/">Licence</a>
+          <a href="#/" onClick={nextRnd}>
+            Licence
+          </a>
         </li>
         <li className="header-nav__menu-item">
           <a href="#/">Upload</a>
@@ -34,4 +41,16 @@ function HeaderNavigation() {
   );
 }
 
-export default HeaderNavigation;
+const mapStateToProps = (state) => {
+  return {
+    page: state.page,
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators(actions, dispatch);
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(HeaderNavigation);
+
+export default connect(mapStateToProps, actions)(HeaderNavigation);
