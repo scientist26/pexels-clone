@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './header-navigation.css';
 import * as actions from '../../redux/actions/actions';

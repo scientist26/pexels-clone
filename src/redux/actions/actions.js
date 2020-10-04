@@ -4,3 +4,10 @@ export const photosLoaded = (photos) => {
     payload: photos,
   };
 };
+
+export const nextPage = (photos) => {
+  return {
+    type: 'NEXT_PAGE',
+    payload: photos,
+  };
+};

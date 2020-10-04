@@ -5,14 +5,14 @@ import './App.css';
 import Modal from './components/pages/modal';
 import MainPage from './components/pages/main-page';
 
-import { createClient } from 'pexels';
+// import { createClient } from 'pexels';
 
-const client = createClient('563492ad6f91700001000001b83ad5ac776846c09cd562218e336b72');
-const query = 'random';
+// const client = createClient('563492ad6f91700001000001b83ad5ac776846c09cd562218e336b72');
+// const query = 'random';
 
-client.photos.search({ query, per_page: 5 }).then((photos) => {
-  console.log(photos);
-});
+// client.photos.search({ query, per_page: 5 }).then((photos) => {
+//   console.log(photos);
+// });
 
 // const initialState = {
 //   page: 1,

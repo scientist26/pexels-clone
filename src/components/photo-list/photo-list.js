@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './photo-list.css';
 
-import { photosLoaded } from '../../redux/actions/actions';
+import { photosLoaded, nextPage } from '../../redux/actions/actions';
 
 import withPhotoService from '../hoc/with-photo-service';
 import PhotoItem from '../photo-item/photo-item';
@@ -10,9 +10,40 @@ import PhotoItem from '../photo-item/photo-item';
 class PhotoList extends Component {
   componentDidMount() {
     const { photoService } = this.props;
-    photoService.getPhoto().then((data) => {
+    photoService.getStartPhoto().then((data) => {
       console.log(data);
       this.props.photosLoaded(data.photos);
+    });
+  }
+
+  onHanldeScroll() {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    ) {
+      return;
+    }
+    const { photoService, page } = this.props;
+    photoService.getNextPhoto(page).then((data) => {
+      console.log(data);
+      this.props.nextPage(data.photos);
+    });
+  }
+
+  componentDidUpdate() {
+    // window.addEventListener('scroll', this.onHanldeClick);
+    window.addEventListener('scroll', () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight
+      ) {
+        return;
+      }
+      const { photoService, page } = this.props;
+      photoService.getNextPhoto(page).then((data) => {
+        console.log(data);
+        this.props.nextPage(data.photos);
+      });
     });
   }
 
@@ -24,7 +55,7 @@ class PhotoList extends Component {
           {photos.map((photo) => {
             return (
               <li key={photo.id}>
-                <PhotoItem photo={photo} />
+                <PhotoItem photo={photo} onNextPage={() => this.onHanldeScroll()} />
               </li>
             );
           })}
@@ -37,14 +68,19 @@ class PhotoList extends Component {
 const mapStateToProps = (state) => {
   return {
     photos: state.photos,
+    page: state.page,
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({ photosLoaded }, dispatch);
+// const mapDispatchToProps = {
+//   photosLoaded,
 // };
 
-const mapDispatchToProps = {
-  photosLoaded,
+const mapDispatchToProps = (dispatch) => {
+  return {
+    photosLoaded: (photos) => dispatch(photosLoaded(photos)),
+    nextPage: (photos) => dispatch(nextPage(photos)),
+  };
 };
+
 export default withPhotoService()(connect(mapStateToProps, mapDispatchToProps)(PhotoList));
