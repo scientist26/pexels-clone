@@ -11,3 +11,17 @@ export const nextPage = (photos) => {
     payload: photos,
   };
 };
+
+export const changeLoad = () => {
+  return {
+    type: 'CHANGE_LOAD',
+  };
+};
+
+export const backgroundPhotoLoaded = (backgroundPhoto, src) => {
+  return {
+    type: 'BACKGROUND_PHOTO_LOADED',
+    payload: backgroundPhoto,
+    background: src,
+  };
+};

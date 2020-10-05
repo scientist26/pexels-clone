@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './photo-list.css';
 
-import { photosLoaded, nextPage } from '../../redux/actions/actions';
+import { photosLoaded, nextPage, changeLoad } from '../../redux/actions/actions';
 
 import withPhotoService from '../hoc/with-photo-service';
 import PhotoItem from '../photo-item/photo-item';
+import Spinner from '../spinner/spinner';
 
 class PhotoList extends Component {
   componentDidMount() {
@@ -16,22 +17,22 @@ class PhotoList extends Component {
     });
   }
 
-  onHanldeScroll() {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    ) {
-      return;
-    }
-    const { photoService, page } = this.props;
-    photoService.getNextPhoto(page).then((data) => {
-      console.log(data);
-      this.props.nextPage(data.photos);
-    });
-  }
+  // onHanldeScroll() {
+  //   if (
+  //     window.innerHeight + document.documentElement.scrollTop !==
+  //     document.documentElement.offsetHeight
+  //   ) {
+  //     return;
+  //   }
+  //   const { photoService, page } = this.props;
+  //   photoService.getNextPhoto(page).then((data) => {
+  //     console.log(data);
+  //     this.props.nextPage(data.photos);
+  //   });
+  // }
 
   componentDidUpdate() {
-    // window.addEventListener('scroll', this.onHanldeClick);
+    // window.addEventListener('scroll', this.onHanldeScroll);
     window.addEventListener('scroll', () => {
       if (
         window.innerHeight + document.documentElement.scrollTop !==
@@ -39,16 +40,20 @@ class PhotoList extends Component {
       ) {
         return;
       }
-      const { photoService, page } = this.props;
-      photoService.getNextPhoto(page).then((data) => {
-        console.log(data);
-        this.props.nextPage(data.photos);
-      });
+      const { photoService, page, loading } = this.props;
+      this.props.changeLoad();
+      if (loading) {
+        photoService.getNextPhoto(page).then((data) => {
+          console.log(data);
+          this.props.nextPage(data.photos);
+        });
+      }
     });
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, loading } = this.props;
+
     return (
       <section className="photo">
         <ul className="photo-list">
@@ -59,6 +64,7 @@ class PhotoList extends Component {
               </li>
             );
           })}
+          {loading && <Spinner />}
         </ul>
       </section>
     );
@@ -69,6 +75,7 @@ const mapStateToProps = (state) => {
   return {
     photos: state.photos,
     page: state.page,
+    loading: state.loading,
   };
 };
 
@@ -80,6 +87,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     photosLoaded: (photos) => dispatch(photosLoaded(photos)),
     nextPage: (photos) => dispatch(nextPage(photos)),
+    changeLoad: () => dispatch(changeLoad()),
   };
 };
 

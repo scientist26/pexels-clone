@@ -40,7 +40,12 @@
   color: #ffffff;
 }
 
-.popular-tag::after {
+.header-search-panel__tags__item:after {
   content: ',';
+  color: #ffffff;
+}
+
+.header-search-panel__tags__item:last-child:after {
+  content: '';
   color: #ffffff;
 }

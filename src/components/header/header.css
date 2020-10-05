@@ -1,4 +1,22 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: center;
+}
+
+.header-author-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  line-height: 19px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  margin-right: 30px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.header-author-link:hover {
+  opacity: 1;
 }

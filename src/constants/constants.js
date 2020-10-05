@@ -1,10 +1,44 @@
-const backgroundSrc = 'https://live.staticflickr.com/65535/50353970307_f0d4db5ee4_h.jpg';
+const searchOffer = [
+  { key: 1, value: 'cat' },
+  { key: 2, value: 'animal' },
+  { key: 3, value: 'nature' },
+  { key: 4, value: 'field' },
+  { key: 5, value: 'weather' },
+  { key: 6, value: 'table' },
+  { key: 7, value: 'scissors' },
+  { key: 8, value: 'telephone' },
+  { key: 9, value: 'book' },
+  { key: 10, value: 'mouse' },
+  { key: 11, value: 'floor' },
+  { key: 12, value: 'door' },
+  { key: 13, value: 'emblem' },
+  { key: 14, value: 'tea' },
+  { key: 15, value: 'coffee' },
+  { key: 16, value: 'day' },
+  { key: 17, value: 'store' },
+  { key: 18, value: 'winter' },
+  { key: 19, value: 'color' },
+  { key: 20, value: 'summer' },
+  { key: 21, value: 'paper' },
+  { key: 22, value: 'people' },
+  { key: 23, value: 'tree' },
+  { key: 24, value: 'black' },
+  { key: 25, value: 'window' },
+  { key: 26, value: 'spoon' },
+  { key: 27, value: 'bag' },
+  { key: 28, value: 'airport' },
+  { key: 29, value: 'air' },
+  { key: 30, value: 'bird' },
+  { key: 31, value: 'city' },
+  { key: 32, value: 'class' },
+  { key: 33, value: 'country' },
+  { key: 34, value: 'face' },
+  { key: 35, value: 'eye' },
+  { key: 36, value: 'farm' },
+  { key: 37, value: 'fish' },
+  { key: 38, value: 'head' },
+  { key: 39, value: 'home' },
+  { key: 40, value: 'money' },
+];
 
-let headerBackground = {
-  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgb(0, 0, 0)), url(${backgroundSrc})`,
-  height: '500px',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-};
-
-export default headerBackground;
+export { searchOffer };
