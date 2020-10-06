@@ -3,6 +3,7 @@ const initialState = {
   backgroundPhoto: {},
   backgroundSrc: null,
   backgroundLoad: true,
+  isShowModal: false,
   page: 1,
   loading: true,
 };
@@ -27,6 +28,26 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+    case 'SHOW_MODAL_WINDOW':
+      return {
+        ...state,
+        isShowModal: true,
+      };
+    case 'HIDE_MODAL_WINDOW':
+      return {
+        ...state,
+        isShowModal: false,
+      };
+    case 'HIDE_MODAL_WINDOW_BTN':
+      return {
+        ...state,
+        isShowModal: false,
+      };
+    // case 'HIDE_PHOTO_INFO':
+    //   return {
+    //     ...state,
+    //     showInfo: false,
+    //   };
     case 'NEXT_PAGE':
       return {
         ...state,

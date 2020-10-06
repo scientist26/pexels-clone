@@ -54,3 +54,8 @@ img {
   max-width: 100%;
   display: block;
 }
+
+#root-modal {
+  position: relative;
+  z-index: 999;
+}

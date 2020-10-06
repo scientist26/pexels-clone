@@ -25,3 +25,26 @@ export const backgroundPhotoLoaded = (backgroundPhoto, src) => {
     background: src,
   };
 };
+
+export const showModalWindow = () => {
+  return {
+    type: 'SHOW_MODAL_WINDOW',
+  };
+};
+
+export const hideModalWindow = () => {
+  return {
+    type: 'HIDE_MODAL_WINDOW',
+  };
+};
+
+export const hideModalWindowBtn = () => {
+  return {
+    type: 'HIDE_MODAL_WINDOW_BTN',
+  };
+};
+// export const hidePhotoInfo = () => {
+//   return {
+//     type: 'HIDE_PHOTO_INFO',
+//   };
+// };

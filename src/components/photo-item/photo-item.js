@@ -1,41 +1,64 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+// import { showPhotoInfo, hidePhotoInfo } from '../../redux/actions/actions';
+
 import './photo-item.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class PhotoItem extends Component {
   state = {
-    selected: false,
+    selectedLike: false,
+    visiblePhotoInfo: false,
+    isShowModal: true,
   };
 
-  addLike = () => {
-    if (this.state.selected === false) {
-      this.setState({
-        selected: true,
-      });
+  onAddLike = () => {
+    if (this.state.selectedLike === false) {
+      this.setState(() => ({
+        selectedLike: true,
+      }));
     } else {
-      this.setState({
-        selected: false,
-      });
+      this.setState(() => ({
+        selectedLike: false,
+      }));
     }
   };
 
+  onShowPhotoInfo = () => {
+    this.setState({
+      visiblePhotoInfo: true,
+    });
+  };
+
+  onHidePhotoInfo = () => {
+    this.setState({
+      visiblePhotoInfo: false,
+    });
+  };
+
   render() {
-    const { photo, onNextPage } = this.props;
-    const { selected } = this.state;
-    const htmlColor = selected ? 'red' : 'white';
+    const { photo, onShowModalWindow } = this.props;
+    const { selectedLike, visiblePhotoInfo } = this.state;
+    const htmlColor = selectedLike ? 'red' : 'white';
+    const photoInfo = visiblePhotoInfo ? 'photo-item__info' : 'photo-item__info hidden';
+
     return (
-      <div className="photo-item">
+      <div
+        className="photo-item"
+        onMouseOver={this.onShowPhotoInfo}
+        onMouseOut={this.onHidePhotoInfo}
+      >
         <a className="photo-item__link" href="#/">
           <img
             className="photo-item__img"
             src={photo.src.medium}
             alt="img"
-            onClick={onNextPage}
+            onClick={onShowModalWindow}
           ></img>
         </a>
-        <div className="photo-item__info">
+        <div className={photoInfo}>
           <a
             className="photo-item__author"
             rel="noopener noreferrer"
@@ -48,7 +71,7 @@ class PhotoItem extends Component {
             <FavoriteIcon
               htmlColor={htmlColor}
               className="photo-item__author-like-svg"
-              onClick={this.addLike}
+              onClick={this.onAddLike}
             />
           </button>
         </div>
@@ -57,4 +80,17 @@ class PhotoItem extends Component {
   }
 }
 
-export default PhotoItem;
+const mapStateToProps = (state) => {
+  return {
+    showInfo: state.showInfo,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // showPhotoInfo: () => dispatch(showPhotoInfo()),
+    // hidePhotoInfo: () => dispatch(hidePhotoInfo()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoItem);

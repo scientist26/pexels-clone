@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './photo-list.css';
 
-import { photosLoaded, nextPage, changeLoad } from '../../redux/actions/actions';
+import {
+  photosLoaded,
+  nextPage,
+  changeLoad,
+  showModalWindow,
+  hideModalWindow,
+  hideModalWindowBtn,
+} from '../../redux/actions/actions';
 
 import withPhotoService from '../hoc/with-photo-service';
 import PhotoItem from '../photo-item/photo-item';
 import Spinner from '../spinner/spinner';
+import Portal from '../portal/portal';
+import Modal from '../modal/modal';
 
 class PhotoList extends Component {
   componentDidMount() {
@@ -31,8 +40,21 @@ class PhotoList extends Component {
   //   });
   // }
 
+  onShowModalWindow = () => {
+    this.props.showModalWindow();
+  };
+
+  onHideModalWindow = (event) => {
+    if (event.target.classList.contains('modal-wrapper')) {
+      this.props.hideModalWindow();
+    }
+  };
+
+  onHideModalWindowBtn = () => {
+    this.props.hideModalWindowBtn();
+  };
+
   componentDidUpdate() {
-    // window.addEventListener('scroll', this.onHanldeScroll);
     window.addEventListener('scroll', () => {
       if (
         window.innerHeight + document.documentElement.scrollTop !==
@@ -52,20 +74,29 @@ class PhotoList extends Component {
   }
 
   render() {
-    const { photos, loading } = this.props;
+    const { photos, loading, isShowModal } = this.props;
 
+    const modal = isShowModal ? (
+      <Portal>
+        <Modal
+          onHideModalWindow={this.onHideModalWindow}
+          onHideModalWindowBtn={this.onHideModalWindowBtn}
+        ></Modal>
+      </Portal>
+    ) : null;
     return (
       <section className="photo">
         <ul className="photo-list">
           {photos.map((photo) => {
             return (
               <li key={photo.id}>
-                <PhotoItem photo={photo} onNextPage={() => this.onHanldeScroll()} />
+                <PhotoItem photo={photo} onShowModalWindow={this.onShowModalWindow} />
               </li>
             );
           })}
           {loading && <Spinner />}
         </ul>
+        {modal}
       </section>
     );
   }
@@ -76,6 +107,7 @@ const mapStateToProps = (state) => {
     photos: state.photos,
     page: state.page,
     loading: state.loading,
+    isShowModal: state.isShowModal,
   };
 };
 
@@ -88,6 +120,9 @@ const mapDispatchToProps = (dispatch) => {
     photosLoaded: (photos) => dispatch(photosLoaded(photos)),
     nextPage: (photos) => dispatch(nextPage(photos)),
     changeLoad: () => dispatch(changeLoad()),
+    showModalWindow: () => dispatch(showModalWindow()),
+    hideModalWindow: () => dispatch(hideModalWindow()),
+    hideModalWindowBtn: () => dispatch(hideModalWindowBtn()),
   };
 };
 
