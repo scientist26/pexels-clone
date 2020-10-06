@@ -27,7 +27,7 @@
 }
 
 .photo-item__author-like {
-  width: 30px;
+  /* width: 30px;
   height: 30px;
   margin: 0.8rem 0.8rem;
   -webkit-transition: 0.1s -webkit-transform ease;
@@ -35,11 +35,17 @@
   transition: 0.1s transform ease;
   transition: 0.1s transform ease, 0.1s -webkit-transform ease;
   border-radius: 4px;
-  font-weight: 600;
-  background: #05a081;
+  font-weight: 600; */
+  margin: 0.8rem 0.8rem;
+  background: none;
   outline: none;
+  border: none;
 }
 
 .photo-item__author-like:hover {
   cursor: pointer;
 }
+
+/* .photo-item__author-like-svg:hover {
+  background-color: blueviolet;
+} */
