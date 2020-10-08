@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-// import { showPhotoInfo, hidePhotoInfo } from '../../redux/actions/actions';
-
-import './photo-item.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './photo-item.css';
 
 class PhotoItem extends Component {
   state = {
@@ -86,11 +84,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // showPhotoInfo: () => dispatch(showPhotoInfo()),
-    // hidePhotoInfo: () => dispatch(hidePhotoInfo()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PhotoItem);
+export default connect(mapStateToProps)(PhotoItem);

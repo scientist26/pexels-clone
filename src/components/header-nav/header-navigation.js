@@ -1,55 +1,38 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './header-navigation.css';
-import * as actions from '../../redux/actions/actions';
 
 import SearchField from '../search-field/search-field';
 
-function HeaderNavigation({ nextPage, nextRnd }) {
+function HeaderNavigation() {
   return (
     <nav className="header-nav">
-      <a className="header-nav__logo" href="#/">
+      <Link className="header-nav__logo" to="/">
         <img src="icon/icon-pexels.png" alt="pexels-icon" className="header-nav__logo-icon"></img>
         <span>Pexels</span>
-      </a>
+      </Link>
       <SearchField />
       <ul className="header-nav__menu-list">
         <li className="header-nav__menu-item">
-          <a href="#/" onClick={nextPage}>
-            Explore
-          </a>
+          <Link to="/">Explore</Link>
         </li>
         <li className="header-nav__menu-item">
-          <a href="#/" onClick={nextRnd}>
-            Licence
-          </a>
+          <Link to="/">Licence</Link>
         </li>
         <li className="header-nav__menu-item">
-          <a href="#/">Upload</a>
+          <Link to="/">Upload</Link>
         </li>
         <li className="header-nav__menu-item">
-          <a href="#/">...</a>
+          <Link to="/">...</Link>
         </li>
         <li className="header-nav__menu-item">
-          <a className="header-nav__menu-item--btn" href="#/">
+          <Link className="header-nav__menu-item--btn" to="/">
             Join
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    page: state.page,
-  };
-};
-
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators(actions, dispatch);
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(HeaderNavigation);
-
-export default connect(mapStateToProps, actions)(HeaderNavigation);
+export default HeaderNavigation;

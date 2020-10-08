@@ -37,7 +37,12 @@
 }
 
 .popular-tag {
+  color: #cac4c4;
+}
+
+.popular-tag:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 
 .header-search-panel__tags__item:after {

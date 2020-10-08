@@ -1,4 +1,4 @@
-@keyframes ldio-zaatzhjtbal {
+@keyframes ldio-tcmda0d4yj {
   0% {
     opacity: 1;
     backface-visibility: hidden;
@@ -10,104 +10,103 @@
     transform: translateZ(0) scale(1, 1);
   }
 }
-.ldio-zaatzhjtbal div > div {
+.ldio-tcmda0d4yj div > div {
   position: absolute;
-  width: 61.92px;
-  height: 61.92px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #72feff;
-  animation: ldio-zaatzhjtbal 1s linear infinite;
+  background: #04f242;
+  animation: ldio-tcmda0d4yj 1s linear infinite;
 }
-.ldio-zaatzhjtbal div:nth-child(1) > div {
-  left: 275px;
-  top: 141px;
+.ldio-tcmda0d4yj div:nth-child(1) > div {
+  left: 148px;
+  top: 88px;
   animation-delay: -0.875s;
 }
-.ldio-zaatzhjtbal > div:nth-child(1) {
+.ldio-tcmda0d4yj > div:nth-child(1) {
   transform: rotate(0deg);
-  transform-origin: 305.96000000000004px 171.96px;
+  transform-origin: 160px 100px;
 }
-.ldio-zaatzhjtbal div:nth-child(2) > div {
-  left: 236px;
-  top: 236px;
+.ldio-tcmda0d4yj div:nth-child(2) > div {
+  left: 130px;
+  top: 130px;
   animation-delay: -0.75s;
 }
-.ldio-zaatzhjtbal > div:nth-child(2) {
+.ldio-tcmda0d4yj > div:nth-child(2) {
   transform: rotate(45deg);
-  transform-origin: 266.96000000000004px 266.96000000000004px;
+  transform-origin: 142px 142px;
 }
-.ldio-zaatzhjtbal div:nth-child(3) > div {
-  left: 141px;
-  top: 275px;
+.ldio-tcmda0d4yj div:nth-child(3) > div {
+  left: 88px;
+  top: 148px;
   animation-delay: -0.625s;
 }
-.ldio-zaatzhjtbal > div:nth-child(3) {
+.ldio-tcmda0d4yj > div:nth-child(3) {
   transform: rotate(90deg);
-  transform-origin: 171.96px 305.96000000000004px;
+  transform-origin: 100px 160px;
 }
-.ldio-zaatzhjtbal div:nth-child(4) > div {
+.ldio-tcmda0d4yj div:nth-child(4) > div {
   left: 46px;
-  top: 236px;
+  top: 130px;
   animation-delay: -0.5s;
 }
-.ldio-zaatzhjtbal > div:nth-child(4) {
+.ldio-tcmda0d4yj > div:nth-child(4) {
   transform: rotate(135deg);
-  transform-origin: 76.96000000000001px 266.96000000000004px;
+  transform-origin: 58px 142px;
 }
-.ldio-zaatzhjtbal div:nth-child(5) > div {
-  left: 7px;
-  top: 141px;
+.ldio-tcmda0d4yj div:nth-child(5) > div {
+  left: 28px;
+  top: 88px;
   animation-delay: -0.375s;
 }
-.ldio-zaatzhjtbal > div:nth-child(5) {
+.ldio-tcmda0d4yj > div:nth-child(5) {
   transform: rotate(180deg);
-  transform-origin: 37.96000000000001px 171.96px;
+  transform-origin: 40px 100px;
 }
-.ldio-zaatzhjtbal div:nth-child(6) > div {
+.ldio-tcmda0d4yj div:nth-child(6) > div {
   left: 46px;
   top: 46px;
   animation-delay: -0.25s;
 }
-.ldio-zaatzhjtbal > div:nth-child(6) {
+.ldio-tcmda0d4yj > div:nth-child(6) {
   transform: rotate(225deg);
-  transform-origin: 76.96000000000001px 76.96000000000001px;
+  transform-origin: 58px 58px;
 }
-.ldio-zaatzhjtbal div:nth-child(7) > div {
-  left: 141px;
-  top: 7px;
+.ldio-tcmda0d4yj div:nth-child(7) > div {
+  left: 88px;
+  top: 28px;
   animation-delay: -0.125s;
 }
-.ldio-zaatzhjtbal > div:nth-child(7) {
+.ldio-tcmda0d4yj > div:nth-child(7) {
   transform: rotate(270deg);
-  transform-origin: 171.96px 37.96000000000001px;
+  transform-origin: 100px 40px;
 }
-.ldio-zaatzhjtbal div:nth-child(8) > div {
-  left: 236px;
+.ldio-tcmda0d4yj div:nth-child(8) > div {
+  left: 130px;
   top: 46px;
   animation-delay: 0s;
 }
-.ldio-zaatzhjtbal > div:nth-child(8) {
+.ldio-tcmda0d4yj > div:nth-child(8) {
   transform: rotate(315deg);
-  transform-origin: 266.96000000000004px 76.96000000000001px;
+  transform-origin: 142px 58px;
 }
-.loadingio-spinner-spin-xa3j7cwwtpe {
-  width: 360px;
-  height: 360px;
+.loadingio-spinner-spin-govxhwgoo1q {
+  width: 200px;
+  height: 200px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   background: #ffffff;
 }
-.ldio-zaatzhjtbal {
+.ldio-tcmda0d4yj {
   width: 100%;
   height: 100%;
   position: relative;
-
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
+  transform-origin: 0 0;
 }
-.ldio-zaatzhjtbal div {
+.ldio-tcmda0d4yj div {
   box-sizing: content-box;
 }

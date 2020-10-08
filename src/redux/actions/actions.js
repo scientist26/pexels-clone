@@ -26,9 +26,10 @@ export const backgroundPhotoLoaded = (backgroundPhoto, src) => {
   };
 };
 
-export const showModalWindow = () => {
+export const showModalWindow = (photo) => {
   return {
     type: 'SHOW_MODAL_WINDOW',
+    payload: photo,
   };
 };
 
@@ -43,8 +44,24 @@ export const hideModalWindowBtn = () => {
     type: 'HIDE_MODAL_WINDOW_BTN',
   };
 };
-// export const hidePhotoInfo = () => {
-//   return {
-//     type: 'HIDE_PHOTO_INFO',
-//   };
-// };
+
+export const inputValueChange = (value) => {
+  return {
+    type: 'INPUT_VALUE_CHANGE',
+    payload: value,
+  };
+};
+
+export const searchPhoto = (photos) => {
+  return {
+    type: 'SEARCH_PHOTO',
+    payload: photos,
+  };
+};
+
+export const staticQuery = (query) => {
+  return {
+    type: 'STATIC_QUERY',
+    payload: query,
+  };
+};

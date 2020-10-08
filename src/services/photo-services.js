@@ -5,7 +5,7 @@ const client = createClient('563492ad6f91700001000001b83ad5ac776846c09cd562218e3
 export default class PhotoService {
   getStartPhoto() {
     const query = 'Nature';
-    return client.photos.search({ query, per_page: 3 });
+    return client.photos.search({ query, per_page: 10 });
   }
 
   getBackgroundPhoto() {
@@ -13,8 +13,11 @@ export default class PhotoService {
     return client.photos.search({ query, per_page: 80 });
   }
 
-  getNextPhoto(page) {
-    const query = 'Nature';
-    return client.photos.search({ page, query, per_page: 3 });
+  getNextPhoto(page, query) {
+    return client.photos.search({ page, query, per_page: 10 });
+  }
+
+  getSearchPhoto(query) {
+    return client.photos.search({ query, per_page: 10 });
   }
 }

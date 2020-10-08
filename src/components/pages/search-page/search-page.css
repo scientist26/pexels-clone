@@ -1,0 +1,13 @@
+.search-page-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 140px;
+}
+
+.search-page-info span {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+}

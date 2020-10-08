@@ -76,9 +76,10 @@
   color: rgb(204, 198, 198);
 }
 
-.header-nav__logo,
+.header-nav__logo:hover,
 .header-nav__menu-item:hover {
   cursor: pointer;
+  text-decoration: none;
 }
 
 @media (max-width: 858px) {

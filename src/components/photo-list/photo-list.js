@@ -21,27 +21,17 @@ class PhotoList extends Component {
   componentDidMount() {
     const { photoService } = this.props;
     photoService.getStartPhoto().then((data) => {
-      console.log(data);
       this.props.photosLoaded(data.photos);
     });
+    window.addEventListener('scroll', this.onScroll);
   }
 
-  // onHanldeScroll() {
-  //   if (
-  //     window.innerHeight + document.documentElement.scrollTop !==
-  //     document.documentElement.offsetHeight
-  //   ) {
-  //     return;
-  //   }
-  //   const { photoService, page } = this.props;
-  //   photoService.getNextPhoto(page).then((data) => {
-  //     console.log(data);
-  //     this.props.nextPage(data.photos);
-  //   });
-  // }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
 
-  onShowModalWindow = () => {
-    this.props.showModalWindow();
+  onShowModalWindow = (photo) => {
+    this.props.showModalWindow(photo);
   };
 
   onHideModalWindow = (event) => {
@@ -54,24 +44,21 @@ class PhotoList extends Component {
     this.props.hideModalWindowBtn();
   };
 
-  componentDidUpdate() {
-    window.addEventListener('scroll', () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight
-      ) {
-        return;
-      }
-      const { photoService, page, loading } = this.props;
+  onScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    ) {
+      return;
+    }
+    const { photoService, page, loading, nextPageStaticQuery } = this.props;
+    if (!loading) {
       this.props.changeLoad();
-      if (loading) {
-        photoService.getNextPhoto(page).then((data) => {
-          console.log(data);
-          this.props.nextPage(data.photos);
-        });
-      }
-    });
-  }
+      photoService.getNextPhoto(page, nextPageStaticQuery).then((data) => {
+        this.props.nextPage(data.photos);
+      });
+    }
+  };
 
   render() {
     const { photos, loading, isShowModal } = this.props;
@@ -90,7 +77,7 @@ class PhotoList extends Component {
           {photos.map((photo) => {
             return (
               <li key={photo.id}>
-                <PhotoItem photo={photo} onShowModalWindow={this.onShowModalWindow} />
+                <PhotoItem photo={photo} onShowModalWindow={() => this.onShowModalWindow(photo)} />
               </li>
             );
           })}
@@ -108,19 +95,16 @@ const mapStateToProps = (state) => {
     page: state.page,
     loading: state.loading,
     isShowModal: state.isShowModal,
+    nextPageStaticQuery: state.nextPageStaticQuery,
   };
 };
-
-// const mapDispatchToProps = {
-//   photosLoaded,
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     photosLoaded: (photos) => dispatch(photosLoaded(photos)),
     nextPage: (photos) => dispatch(nextPage(photos)),
     changeLoad: () => dispatch(changeLoad()),
-    showModalWindow: () => dispatch(showModalWindow()),
+    showModalWindow: (photo) => dispatch(showModalWindow(photo)),
     hideModalWindow: () => dispatch(hideModalWindow()),
     hideModalWindowBtn: () => dispatch(hideModalWindowBtn()),
   };

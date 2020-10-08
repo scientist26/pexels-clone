@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  outline: 0 !important;
 }
 
 body,
@@ -26,6 +27,7 @@ ul[class],
 ol[class] {
   padding: 0;
   list-style: none;
+  margin-bottom: 0;
 }
 
 body,
@@ -34,8 +36,6 @@ h2,
 h3,
 h4,
 p,
-/* ul[class],
-ol[class], */
 li,
 figure,
 figcaption,
@@ -46,8 +46,11 @@ dd {
 }
 
 a {
-  /* text-decoration-skip-ink: auto; */
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
 }
 
 img {

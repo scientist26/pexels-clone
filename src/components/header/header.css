@@ -18,5 +18,6 @@
 }
 
 .header-author-link:hover {
+  color: #fff;
   opacity: 1;
 }

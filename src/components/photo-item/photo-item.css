@@ -29,7 +29,11 @@
   padding-left: 1rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: #e8e8e8;
+  color: #d1caca;
+}
+
+.photo-item__author-name:hover {
+  color: #f7f4f4;
 }
 
 .photo-item__author-like {
@@ -37,6 +41,10 @@
   background: none;
   outline: none;
   border: none;
+}
+
+.photo-item__author-like:active {
+  outline: none;
 }
 
 .photo-item__author-like:hover {

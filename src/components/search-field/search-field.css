@@ -48,6 +48,10 @@
   outline: none;
 }
 
+.search-field__btn:active {
+  outline: 0;
+}
+
 .search-field__btn i {
   width: 25px;
   height: 25px;
