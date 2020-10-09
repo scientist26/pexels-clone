@@ -9,6 +9,7 @@ const initialState = {
   loading: true,
   inputValue: '',
   nextPageStaticQuery: 'nature',
+  error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         photos: action.payload,
         loading: false,
+        error: null,
       };
     case 'BACKGROUND_PHOTO_LOADED':
       return {
@@ -25,6 +27,7 @@ const reducer = (state = initialState, action) => {
         backgroundPhoto: action.payload,
         backgroundSrc: action.background,
         backgroundLoad: false,
+        error: null,
       };
     case 'CHANGE_LOAD':
       return {
@@ -53,6 +56,7 @@ const reducer = (state = initialState, action) => {
         page: state.page + 1,
         photos: state.photos.concat(action.payload),
         loading: false,
+        error: null,
       };
     case 'INPUT_VALUE_CHANGE':
       return {
@@ -63,11 +67,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         photos: action.payload,
+        error: null,
       };
     case 'STATIC_QUERY':
       return {
         ...state,
         nextPageStaticQuery: action.payload,
+      };
+    case 'PHOTO_ERROR':
+      return {
+        ...state,
+        photos: [],
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

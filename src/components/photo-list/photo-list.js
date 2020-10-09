@@ -9,6 +9,7 @@ import {
   showModalWindow,
   hideModalWindow,
   hideModalWindowBtn,
+  photosError,
 } from '../../redux/actions/actions';
 
 import withPhotoService from '../hoc/with-photo-service';
@@ -16,13 +17,17 @@ import PhotoItem from '../photo-item/photo-item';
 import Spinner from '../spinner/spinner';
 import Portal from '../portal/portal';
 import Modal from '../modal/modal';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 class PhotoList extends Component {
   componentDidMount() {
-    const { photoService } = this.props;
-    photoService.getStartPhoto().then((data) => {
-      this.props.photosLoaded(data.photos);
-    });
+    const { photoService, photosError } = this.props;
+    photoService
+      .getStartPhoto()
+      .then((data) => {
+        this.props.photosLoaded(data.photos);
+      })
+      .catch((err) => photosError(err));
     window.addEventListener('scroll', this.onScroll);
   }
 
@@ -54,14 +59,17 @@ class PhotoList extends Component {
     const { photoService, page, loading, nextPageStaticQuery } = this.props;
     if (!loading) {
       this.props.changeLoad();
-      photoService.getNextPhoto(page, nextPageStaticQuery).then((data) => {
-        this.props.nextPage(data.photos);
-      });
+      photoService
+        .getNextPhoto(page, nextPageStaticQuery)
+        .then((data) => {
+          this.props.nextPage(data.photos);
+        })
+        .catch((err) => photosError(err));
     }
   };
 
   render() {
-    const { photos, loading, isShowModal } = this.props;
+    const { photos, loading, isShowModal, error } = this.props;
 
     const modal = isShowModal ? (
       <Portal>
@@ -82,6 +90,7 @@ class PhotoList extends Component {
             );
           })}
           {loading && <Spinner />}
+          {error && <ErrorIndicator />}
         </ul>
         {modal}
       </section>
@@ -96,6 +105,7 @@ const mapStateToProps = (state) => {
     loading: state.loading,
     isShowModal: state.isShowModal,
     nextPageStaticQuery: state.nextPageStaticQuery,
+    error: state.error,
   };
 };
 
@@ -107,6 +117,7 @@ const mapDispatchToProps = (dispatch) => {
     showModalWindow: (photo) => dispatch(showModalWindow(photo)),
     hideModalWindow: () => dispatch(hideModalWindow()),
     hideModalWindowBtn: () => dispatch(hideModalWindowBtn()),
+    photosError: (error) => dispatch(photosError(error)),
   };
 };
 

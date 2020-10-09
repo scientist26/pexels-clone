@@ -10,15 +10,6 @@ class MainPage extends Component {
         <Header />
         <div className="divide-line"></div>
         <PhotoList />
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
-        <div className="divide-line"></div>
       </React.Fragment>
     );
   }

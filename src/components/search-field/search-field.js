@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './search-field.css';
 
-import { inputValueChange, searchPhoto, staticQuery } from '../../redux/actions/actions';
+import {
+  inputValueChange,
+  searchPhoto,
+  staticQuery,
+  photosError,
+} from '../../redux/actions/actions';
 import withPhotoService from '../hoc/with-photo-service';
 
 class SearchField extends Component {
@@ -20,9 +25,12 @@ class SearchField extends Component {
 
     staticQuery(inputValue);
 
-    photoService.getSearchPhoto(inputValue).then((data) => {
-      this.props.searchPhoto(data.photos);
-    });
+    photoService
+      .getSearchPhoto(inputValue)
+      .then((data) => {
+        this.props.searchPhoto(data.photos);
+      })
+      .catch((err) => photosError(err));
     this.props.history.push('/search');
     e.preventDefault();
   };
@@ -71,6 +79,7 @@ const mapStateToProps = (state) => {
   return {
     inputValue: state.inputValue,
     nextPageStaticQuery: state.nextPageStaticQuery,
+    error: state.error,
   };
 };
 
@@ -79,6 +88,7 @@ const mapDispatchToProps = (dispatch) => {
     inputValueChange: (value) => dispatch(inputValueChange(value)),
     searchPhoto: (photos) => dispatch(searchPhoto(photos)),
     staticQuery: (query) => dispatch(staticQuery(query)),
+    photosError: (error) => dispatch(photosError(error)),
   };
 };
 

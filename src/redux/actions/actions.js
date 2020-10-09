@@ -65,3 +65,10 @@ export const staticQuery = (query) => {
     payload: query,
   };
 };
+
+export const photosError = (error) => {
+  return {
+    type: 'PHOTO_ERROR',
+    payload: error,
+  };
+};

@@ -7,13 +7,16 @@ import './search-page.css';
 
 class SearchPage extends Component {
   render() {
-    const { nextPageStaticQuery } = this.props;
+    const { nextPageStaticQuery, photos } = this.props;
+    const errorMessage = `No result for "${nextPageStaticQuery}"`;
     const upFirst = nextPageStaticQuery[0].toUpperCase() + nextPageStaticQuery.slice(1);
+    const requestResult = photos.length === 0 ? errorMessage : upFirst;
+
     return (
       <React.Fragment>
         <HeaderNavigation />
         <div className="search-page-info">
-          <span>{upFirst} Photos</span>
+          <span>{requestResult} Photos</span>
         </div>
         <PhotoList />
       </React.Fragment>
@@ -24,6 +27,7 @@ class SearchPage extends Component {
 const mapStateToProps = (state) => {
   return {
     nextPageStaticQuery: state.nextPageStaticQuery,
+    photos: state.photos,
   };
 };
 
