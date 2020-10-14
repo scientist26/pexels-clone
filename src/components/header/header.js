@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './header.css';
+import './Header.css';
 
-import withPhotoService from '../hoc/with-photo-service';
+import withPhotoService from '../../hoc';
 import { backgroundPhotoLoaded } from '../../redux/actions/actions';
 
-import HeaderNavigation from '../header-nav/header-navigation';
-import SearchPanel from '../search-panel/search-panel';
-import Spinner from '../spinner/spinner';
-import renderBackground from '../../utils/utils';
+import HeaderNavigation from '../HeaderNav';
+import SearchPanel from '../SearchPanel';
+import Spinner from '../Spinner';
+import renderBackground from '../../utils';
 
 const randomBackgroundImg = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -63,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withPhotoService()(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withPhotoService(connect(mapStateToProps, mapDispatchToProps)(Header));

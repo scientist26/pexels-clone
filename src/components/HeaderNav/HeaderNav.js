@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './header-navigation.css';
+import './HeaderNav.css';
 
-import SearchField from '../search-field/search-field';
+import SearchField from '../SearchField';
 
 function HeaderNavigation() {
   return (
     <nav className="header-nav">
       <Link className="header-nav__logo" to="/">
-        <img src="icon/icon-pexels.png" alt="pexels-icon" className="header-nav__logo-icon"></img>
+        <img src="/icon/icon-pexels.png" alt="pexels-icon" className="header-nav__logo-icon"></img>
         <span>Pexels</span>
       </Link>
       <SearchField />

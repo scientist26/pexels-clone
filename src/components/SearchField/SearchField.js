@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import './search-field.css';
+import './SearchField.css';
 
 import {
   inputValueChange,
@@ -9,7 +9,7 @@ import {
   staticQuery,
   photosError,
 } from '../../redux/actions/actions';
-import withPhotoService from '../hoc/with-photo-service';
+import withPhotoService from '../../hoc';
 
 class SearchField extends Component {
   handleChange = (event) => {
@@ -31,7 +31,7 @@ class SearchField extends Component {
         this.props.searchPhoto(data.photos);
       })
       .catch((err) => photosError(err));
-    this.props.history.push('/search');
+    this.props.history.push(`/search/${inputValue}`);
     e.preventDefault();
   };
 
@@ -93,5 +93,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withRouter(
-  withPhotoService()(connect(mapStateToProps, mapDispatchToProps)(SearchField))
+  withPhotoService(connect(mapStateToProps, mapDispatchToProps)(SearchField))
 );

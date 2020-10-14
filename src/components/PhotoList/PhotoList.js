@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './photo-list.css';
+import './PhotoList.css';
 
 import {
   photosLoaded,
@@ -12,12 +12,12 @@ import {
   photosError,
 } from '../../redux/actions/actions';
 
-import withPhotoService from '../hoc/with-photo-service';
-import PhotoItem from '../photo-item/photo-item';
-import Spinner from '../spinner/spinner';
-import Portal from '../portal/portal';
-import Modal from '../modal/modal';
-import ErrorIndicator from '../error-indicator/error-indicator';
+import withPhotoService from '../../hoc';
+import PhotoItem from '../PhotoItem';
+import Spinner from '../Spinner';
+import Portal from '../Portal';
+import Modal from '../Modal';
+import ErrorIndicator from '../ErrorIndicator';
 
 class PhotoList extends Component {
   componentDidMount() {
@@ -121,4 +121,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withPhotoService()(connect(mapStateToProps, mapDispatchToProps)(PhotoList));
+export default withPhotoService(connect(mapStateToProps, mapDispatchToProps)(PhotoList));

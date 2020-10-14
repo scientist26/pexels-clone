@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HeaderNavigation from '../../header-nav/header-navigation';
-import PhotoList from '../../photo-list/photo-list';
+import HeaderNavigation from '../../components/HeaderNav';
+import PhotoList from '../../components/PhotoList';
 
-import './search-page.css';
+import './SearchPage.css';
 
 class SearchPage extends Component {
   render() {

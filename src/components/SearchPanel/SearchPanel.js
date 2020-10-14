@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './search-panel.css';
+import './SearchPanel.css';
 
 import { photosLoaded, staticQuery } from '../../redux/actions/actions';
-import withPhotoService from '../hoc/with-photo-service';
-import SearchField from '../search-field/search-field';
-import { searchOffer } from '../../constants/constants';
+import withPhotoService from '../../hoc';
+import SearchField from '../SearchField';
+import { searchOffer } from '../../constants/searchOffer';
 
 const shuffleOffer = searchOffer.sort(() => 0.5 - Math.random()).slice(0, 7);
 
@@ -33,7 +33,8 @@ class SearchPanel extends Component {
                 <li key={offer.key} className="header-search-panel__tags__item">
                   <Link
                     className="popular-tag"
-                    to="/search"
+                    // to="/search"
+                    to={`/search/${offer.value}`}
                     onClick={() => this.searchStaticQuery(offer.value)}
                   >
                     {offer.value}
@@ -61,4 +62,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withPhotoService()(connect(mapStateToProps, mapDispatchToProps)(SearchPanel));
+export default withPhotoService(connect(mapStateToProps, mapDispatchToProps)(SearchPanel));

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './photo-item.css';
+import './PhotoItem.css';
 
 class PhotoItem extends Component {
   state = {

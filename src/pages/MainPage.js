@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Header from '../header/header';
-import PhotoList from '../photo-list/photo-list';
+import Header from '../components/Header';
+import PhotoList from '../components/PhotoList';
 
 class MainPage extends Component {
   render() {

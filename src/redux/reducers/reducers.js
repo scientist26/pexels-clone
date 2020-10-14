@@ -67,6 +67,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         photos: action.payload,
+        page: 2,
         error: null,
       };
     case 'STATIC_QUERY':

@@ -5,9 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
-import ErrorBoundry from './components/error-boundry/error-boundry';
-import PhotoService from './services/photo-services';
-import { PhotoServiceProvider } from './components/photo-service-context/photo-service-context';
+import ErrorBoundry from './components/ErrorBoundry';
+import PhotoService from './services';
+import { PhotoServiceProvider } from './PhotoServiceContext';
 
 import store from './redux/store';
 

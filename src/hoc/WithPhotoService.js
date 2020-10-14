@@ -1,7 +1,7 @@
 import React from 'react';
-import { PhotoServiceConsumer } from '../photo-service-context/photo-service-context';
+import { PhotoServiceConsumer } from '../PhotoServiceContext';
 
-const withPhotoService = () => (Wrapped) => {
+const withPhotoService = (Wrapped) => {
   return (props) => {
     return (
       <PhotoServiceConsumer>
