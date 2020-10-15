@@ -10,6 +10,7 @@ const initialState = {
   inputValue: '',
   nextPageStaticQuery: 'nature',
   error: null,
+  isShowNavInput: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -81,6 +82,16 @@ const reducer = (state = initialState, action) => {
         photos: [],
         loading: false,
         error: action.payload,
+      };
+    case 'SHOW_NAV_INPUT':
+      return {
+        ...state,
+        isShowNavInput: true,
+      };
+    case 'HIDE_NAV_INPUT':
+      return {
+        ...state,
+        isShowNavInput: false,
       };
     default:
       return state;

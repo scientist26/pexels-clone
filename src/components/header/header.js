@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Header.css';
 
 import withPhotoService from '../../hoc';
-import { backgroundPhotoLoaded } from '../../redux/actions/actions';
+import { backgroundPhotoLoaded, showNavInput, hideNavInput } from '../../redux/actions/actions';
 
 import HeaderNavigation from '../HeaderNav';
 import SearchPanel from '../SearchPanel';
@@ -21,7 +21,20 @@ class Header extends Component {
       const randomImg = randomBackgroundImg(data.photos);
       this.props.backgroundPhotoLoaded(randomImg, randomImg.src.landscape);
     });
+    window.addEventListener('scroll', this.onScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onScroll = () => {
+    if (document.documentElement.scrollTop > 100) {
+      this.props.showNavInput();
+    } else {
+      this.props.hideNavInput();
+    }
+  };
 
   render() {
     const { backgroundPhoto, backgroundSrc, backgroundLoad } = this.props;
@@ -60,6 +73,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     backgroundPhotoLoaded: (backgroundPhoto, src) =>
       dispatch(backgroundPhotoLoaded(backgroundPhoto, src)),
+    showNavInput: () => {
+      dispatch(showNavInput());
+    },
+    hideNavInput: () => {
+      dispatch(hideNavInput());
+    },
   };
 };
 

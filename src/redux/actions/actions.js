@@ -72,3 +72,15 @@ export const photosError = (error) => {
     payload: error,
   };
 };
+
+export const showNavInput = () => {
+  return {
+    type: 'SHOW_NAV_INPUT',
+  };
+};
+
+export const hideNavInput = () => {
+  return {
+    type: 'HIDE_NAV_INPUT',
+  };
+};

@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './HeaderNav.css';
 
 import SearchField from '../SearchField';
 
-function HeaderNavigation() {
+function HeaderNavigation({ isShowNavInput }) {
+  const headerBackground = isShowNavInput ? 'header-nav header-nav--background' : 'header-nav';
   return (
-    <nav className="header-nav">
+    <nav className={headerBackground}>
       <Link className="header-nav__logo" to="/">
         <img src="/icon/icon-pexels.png" alt="pexels-icon" className="header-nav__logo-icon"></img>
         <span>Pexels</span>
       </Link>
-      <SearchField />
+      {isShowNavInput ? <SearchField /> : null}
       <ul className="header-nav__menu-list">
         <li className="header-nav__menu-item">
           <Link to="/">Explore</Link>
@@ -35,4 +37,10 @@ function HeaderNavigation() {
   );
 }
 
-export default HeaderNavigation;
+const mapStateToProps = (state) => {
+  return {
+    isShowNavInput: state.isShowNavInput,
+  };
+};
+
+export default connect(mapStateToProps)(HeaderNavigation);

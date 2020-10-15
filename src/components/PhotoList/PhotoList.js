@@ -36,22 +36,25 @@ class PhotoList extends Component {
   }
 
   onShowModalWindow = (photo) => {
+    document.body.style.overflow = 'hidden';
     this.props.showModalWindow(photo);
   };
 
   onHideModalWindow = (event) => {
     if (event.target.classList.contains('modal-wrapper')) {
+      document.body.style.overflow = '';
       this.props.hideModalWindow();
     }
   };
 
   onHideModalWindowBtn = () => {
+    document.body.style.overflow = '';
     this.props.hideModalWindowBtn();
   };
 
   onScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.clientHeight + document.documentElement.scrollTop !==
       document.documentElement.offsetHeight
     ) {
       return;
