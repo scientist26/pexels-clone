@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './SearchPanel.css';
 
-import { photosLoaded, staticQuery } from '../../redux/actions/actions';
+import { photosLoaded, staticQuery, showNavInput } from '../../redux/actions/actions';
 import withPhotoService from '../../hoc';
 import SearchField from '../SearchField';
 import { searchOffer } from '../../constants/searchOffer';
@@ -12,11 +12,12 @@ const shuffleOffer = searchOffer.sort(() => 0.5 - Math.random()).slice(0, 7);
 
 class SearchPanel extends Component {
   searchStaticQuery(query) {
-    const { photoService, photosLoaded, staticQuery } = this.props;
+    const { photoService, photosLoaded, staticQuery, showNavInput } = this.props;
     staticQuery(query);
     photoService.getSearchPhoto(query).then((data) => {
       photosLoaded(data.photos);
     });
+    showNavInput();
   }
   render() {
     return (
@@ -59,6 +60,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     photosLoaded: (photos) => dispatch(photosLoaded(photos)),
     staticQuery: (query) => dispatch(staticQuery(query)),
+    showNavInput: () => dispatch(showNavInput()),
   };
 };
 

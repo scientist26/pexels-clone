@@ -12,15 +12,27 @@ class PhotoItem extends Component {
     isShowModal: true,
   };
 
+  componentDidMount() {
+    if (localStorage.getItem(this.props.photo.id) === null) {
+      return;
+    } else {
+      this.setState(() => ({
+        selectedLike: true,
+      }));
+    }
+  }
+
   onAddLike = () => {
     if (this.state.selectedLike === false) {
       this.setState(() => ({
         selectedLike: true,
       }));
+      localStorage.setItem(`${this.props.photo.id}`, `${this.props.photo.id}`);
     } else {
       this.setState(() => ({
         selectedLike: false,
       }));
+      localStorage.removeItem(`${this.props.photo.id}`, `${this.props.photo.id}`);
     }
   };
 

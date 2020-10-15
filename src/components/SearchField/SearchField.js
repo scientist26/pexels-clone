@@ -8,6 +8,7 @@ import {
   searchPhoto,
   staticQuery,
   photosError,
+  showNavInput,
 } from '../../redux/actions/actions';
 import withPhotoService from '../../hoc';
 
@@ -37,9 +38,11 @@ class SearchField extends Component {
 
   handleSearch = (e) => {
     if (e.type === 'click') {
+      this.props.showNavInput();
       return this.requestSearchData(e);
     }
     if (e.type === 'onSubmit') {
+      this.props.showNavInput();
       return this.requestSearchData(e);
     }
   };
@@ -89,6 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     searchPhoto: (photos) => dispatch(searchPhoto(photos)),
     staticQuery: (query) => dispatch(staticQuery(query)),
     photosError: (error) => dispatch(photosError(error)),
+    showNavInput: () => dispatch(showNavInput()),
   };
 };
 
