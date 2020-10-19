@@ -1,0 +1,40 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.747);
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.modal-close:active {
+  outline: none;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+  background-color: rgba(107, 102, 102, 0.5);
+}
+
+.modal__info-btn-group {
+  margin-left: 1rem;
+}
