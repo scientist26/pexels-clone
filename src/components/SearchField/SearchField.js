@@ -37,11 +37,8 @@ class SearchField extends Component {
   };
 
   handleSearch = (e) => {
-    if (e.type === 'click') {
-      this.props.showNavInput();
-      return this.requestSearchData(e);
-    }
-    if (e.type === 'onSubmit') {
+    if (e.type === 'click' || e.type === 'onSubmit') {
+      localStorage.setItem('request', this.props.inputValue);
       this.props.showNavInput();
       return this.requestSearchData(e);
     }

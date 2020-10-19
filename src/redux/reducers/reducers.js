@@ -1,3 +1,6 @@
+const saveRequest = localStorage.getItem('request');
+const req = saveRequest != null ? saveRequest : 'nature';
+
 const initialState = {
   photos: [],
   modalPhoto: {},
@@ -8,7 +11,8 @@ const initialState = {
   page: 2,
   loading: true,
   inputValue: '',
-  nextPageStaticQuery: 'nature',
+  // nextPageStaticQuery: 'nature',
+  nextPageStaticQuery: req,
   error: null,
   isShowNavInput: false,
 };

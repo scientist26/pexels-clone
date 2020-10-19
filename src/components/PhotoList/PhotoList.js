@@ -21,9 +21,9 @@ import ErrorIndicator from '../ErrorIndicator';
 
 class PhotoList extends Component {
   componentDidMount() {
-    const { photoService, photosError } = this.props;
+    const { photoService, photosError, nextPageStaticQuery } = this.props;
     photoService
-      .getStartPhoto()
+      .getStartPhoto(nextPageStaticQuery)
       .then((data) => {
         this.props.photosLoaded(data.photos);
       })

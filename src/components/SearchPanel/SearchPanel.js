@@ -13,6 +13,7 @@ const shuffleOffer = searchOffer.sort(() => 0.5 - Math.random()).slice(0, 7);
 class SearchPanel extends Component {
   searchStaticQuery(query) {
     const { photoService, photosLoaded, staticQuery, showNavInput } = this.props;
+    localStorage.setItem('request', query);
     staticQuery(query);
     photoService.getSearchPhoto(query).then((data) => {
       photosLoaded(data.photos);
@@ -34,7 +35,6 @@ class SearchPanel extends Component {
                 <li key={offer.key} className="header-search-panel__tags__item">
                   <Link
                     className="popular-tag"
-                    // to="/search"
                     to={`/search/${offer.value}`}
                     onClick={() => this.searchStaticQuery(offer.value)}
                   >
