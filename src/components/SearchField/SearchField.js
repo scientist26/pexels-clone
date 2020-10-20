@@ -20,7 +20,7 @@ class SearchField extends Component {
 
   requestSearchData = (e) => {
     const { photoService, inputValue, staticQuery } = this.props;
-    if (inputValue === '') {
+    if (inputValue.trim() === '') {
       return;
     }
 

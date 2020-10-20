@@ -1,5 +1,5 @@
 const saveRequest = localStorage.getItem('request');
-const req = saveRequest != null ? saveRequest : 'nature';
+const req = (saveRequest !== null  && saveRequest.trim() !== '') ? saveRequest : 'nature';
 
 const initialState = {
   photos: [],
